@@ -32,16 +32,15 @@ def webServer(port=13331):
       #Fill in start 
               
       #Content-Type is an example on how to send a header as bytes. There are more!
-      outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
       outputdata += b"HTTP/1.1 200 OK\r\n" #header for a response that is okay
-      outputdata += b"\r\n\r\n"
+      outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
+      outputdata += b"\r\n"
 
       #Note that a complete header must end with a blank line, creating the four-byte sequence "\r\n\r\n" Refer to https://w3.cs.jmu.edu/kirkpams/OpenCSF/Books/csf/html/TCPSockets.html
  
       #Fill in end
                
       for i in f: #for line in file
-        i=i.encode()
         outputdata+=i
       #Fill in start - append your html file contents #Fill in end 
         
@@ -59,9 +58,9 @@ def webServer(port=13331):
       # Send response message for invalid request due to the file not being found (404)
       # Remember the format you used in the try: block!
       #Fill in start
-      outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
       outputdata += b"HTTP/1.1 404 Not Found\r\n" #header for a response that file is not found
-      outputdata += b"\r\n\r\n"
+      outputdata = b"Content-Type: text/html; charset=UTF-8\r\n"
+      outputdata += b"\r\n"
       #Fill in end
       connectionSocket.send(outputdata)
 
